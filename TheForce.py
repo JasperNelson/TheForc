@@ -30,6 +30,7 @@ $R@i.~~ !     :   ~$$$$$B$$en:``
 ?MXT@Wx.~    :     ~"##*$$$$M~
 You Sure About That?
 what you doin?""")
+    time.sleep(4)
     instance.close() # close instance
     print(client_address)
     return(client_address)
