@@ -24,13 +24,9 @@ def listen( SockNum:int=22) -> str:
 ⠀⠀⠀⠀⠈⠻⢿⣦⣔⡠⠁⠂⢄⠠⠀⠄⠠⠐⡀⢸⣯⢎⣿⣆⣀⡀⣀⣴⡱⠀
 ⠀⠀⠀⠀⠀⠀⠀⠘⠛⡽⣷⣾⣦⣤⣥⣬⡤⣵⣶⣾⡿⣟⠊⡙⣒⠛⠓⠉⠀⠀""")
     instance.close() # close instance
+    print(client_address)
     return(client_address)
 
-def kick(SockNum:str)->None:
-    print(SockNum)
-
-
 while True:
-    a=listen()
-    kick(a)
+    listen()
     time.sleep(100)
