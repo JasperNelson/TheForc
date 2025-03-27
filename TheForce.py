@@ -1,6 +1,6 @@
 # Script to auto block IP's that are sniffing our "honey" ports. 
 import socket
-import os
+import subprocess
 import time
 
 def listen( SockNum:int=22) -> str:
@@ -11,13 +11,14 @@ def listen( SockNum:int=22) -> str:
     return(client_address)
 
 def kick(SockNum:int)->None:
-    os.system("conf")
-    os.system(f"set firewall ipv4 name foo rule 1 source address{str(SockNum)}")
-    os.system("commit")
+    print(subprocess.run("conf"), shell=True, capture_output=True, text=True)
+    print(subprocess.run(f"set firewall ipv4 name foo rule 1 source address{str(SockNum)}"), shell=True, capture_output=True, text=True)
+    print(subprocess.run("commit"), shell=True, capture_output=True, text=True)
 
 
 while True:
     a=listen()
     kick(a)
     time.sleep(100)
+
     
