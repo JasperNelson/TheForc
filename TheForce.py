@@ -7,18 +7,30 @@ def listen( SockNum:int=22) -> str:
     SockNum
     instance=socket.create_server(("",SockNum), family=socket.AF_INET, backlog=None)        
     client_conn, client_address = instance.accept()
+    instance.send(
+"""⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⠿⠛⠛⠋⠉⠉⠛⠛⠛⠻⢽⣦⣄⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣴⡾⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⠻⣖⣄⠀⠀⠀⠀
+⠀⠀⢀⣼⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠈⠻⣷⡄⠀⠀
+⠀⢠⣾⠋⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣁⠀⠉⠉⠑⠲⣄⡀⠀⠀⠀⠀⠈⢾⣆⠀
+⣰⣿⠃⠀⠀⠀⣰⣶⣶⣶⣿⣁⣀⠀⠉⠉⠓⠦⣄⡀⠀⠙⢶⡒⠲⢦⡀⠈⢯⣦
+⣿⡇⠀⠀⢀⣴⠃⠀⠀⢹⣏⠉⠉⠉⠙⠲⢤⡀⠈⠱⠆⠀⠀⠙⠂⠀⢳⡀⠘⡿
+⣻⠀⠀⣠⡿⠁⡀⠀⠄⣸⢿⡟⠲⠦⣄⡀⠀⠙⠂⠀⠀⠀⠀⠀⠀⠀⠀⢷⠀⢷
+⣿⠀⣴⡟⡠⢡⢐⢉⣼⣇⡈⠳⣤⣀⠀⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡄⢺
+⣿⣼⠏⡴⡑⢆⣪⣾⣁⠉⠙⠛⠶⢯⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡥⣻
+⣿⣏⡜⣲⡙⣶⠟⣿⣿⣿⣶⣦⣤⣀⡈⠉⠻⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠻
+⠹⣿⡜⢦⣽⠏⠀⠘⢿⣿⣿⣿⣿⣿⣿⣷⣶⣤⣙⣲⣤⡄⠀⠀⠀⠀⠀⠀⢘⠀
+⠀⠘⢿⣿⠃⠐⠠⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⠀⠀⠀⠀⠀⠀⢨⠀
+⠀⠀⠈⠻⣿⣤⠁⠂⠄⡀⠀⠀⠈⠉⠙⠛⠋⠉⠉⢸⣯⢽⣇⠀⠀⠀⠀⠀⡂⢸
+⠀⠀⠀⠀⠈⠻⢿⣦⣔⡠⠁⠂⢄⠠⠀⠄⠠⠐⡀⢸⣯⢎⣿⣆⣀⡀⣀⣴⡱⠀
+⠀⠀⠀⠀⠀⠀⠀⠘⠛⡽⣷⣾⣦⣤⣥⣬⡤⣵⣶⣾⡿⣟⠊⡙⣒⠛⠓⠉⠀⠀""")
     instance.close() # close instance
     return(client_address)
 
-def kick(SockNum:int)->None:
-    print(subprocess.run("conf"), shell=True, capture_output=True, text=True)
-    print(subprocess.run(f"set firewall ipv4 name foo rule 1 source address{str(SockNum)}"), shell=True, capture_output=True, text=True)
-    print(subprocess.run("commit"), shell=True, capture_output=True, text=True)
+def kick(SockNum:str)->None:
+    print(SockNum)
 
 
 while True:
     a=listen()
     kick(a)
     time.sleep(100)
-
-    
